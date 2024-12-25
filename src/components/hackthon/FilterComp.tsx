@@ -24,11 +24,23 @@ const FilterComp = (props: Props) => {
     const levels = ["Easy", "Medium", "Hard"];
 
     const handleFilterChange = (filter: string) => {
-        setSelectedFilters((prev) =>
-            prev.includes(filter)
-                ? prev.filter((f) => f !== filter)
-                : [...prev, filter]
-        );
+        if (filter.toLowerCase() === 'all') {
+            // Check if 'all' is already selected
+            if (selectedFilters.length === filters.length) {
+                // If all filters are currently selected, clear the selection
+                setSelectedFilters([]);
+            } else {
+                // Otherwise, select all filters
+                setSelectedFilters(filters);
+            }
+        } else {
+            // Toggle individual filters
+            if (selectedFilters.includes(filter)) {
+                setSelectedFilters(selectedFilters.filter((f) => f !== filter));
+            } else {
+                setSelectedFilters([...selectedFilters, filter]);
+            }
+        }
     };
 
     const handleLevelChange = (level: string) => {
@@ -46,10 +58,15 @@ const FilterComp = (props: Props) => {
     // logic to remove the filer or level from the parent component through props
     useEffect(() => {
         if (props.filterToRemove) {
-            if (selectedFilters.includes(props.filterToRemove)) {
-                setSelectedFilters(selectedFilters.filter((filter) => filter !== props.filterToRemove));
-            } else if (selectedLevels.includes(props.filterToRemove)) {
-                setSelectedLevels(selectedLevels.filter((level) => level !== props.filterToRemove));
+            // If 'all' is selected, clear all filters
+            if (props.filterToRemove.toLowerCase() === 'all') {
+                setSelectedFilters([]);
+            } else {
+                if (selectedFilters.includes(props.filterToRemove)) {
+                    setSelectedFilters(selectedFilters.filter((filter) => filter !== props.filterToRemove));
+                } else if (selectedLevels.includes(props.filterToRemove)) {
+                    setSelectedLevels(selectedLevels.filter((level) => level !== props.filterToRemove));
+                }
             }
         }
     }, [props.filterToRemove]);

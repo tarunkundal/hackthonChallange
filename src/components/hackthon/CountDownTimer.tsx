@@ -86,7 +86,6 @@ const CountdownTimer = ({ startDate, endDate, challengeName, donotShowDetails }:
 
             {!donotShowDetails && <Heading size='md'>{challengeName}</Heading>}
 
-
             <Text color={donotShowDetails ? COLORS.Brand[50] : 'black'} variant={TextVariant.semibold14} mb={-2}>{status}</Text>
             {status === "Event Ended" ? (
                 <Text p={2} w={'fit-content'} bg={donotShowDetails ? challangeStatus[status].color : 'inherit'} borderRadius={'md'} variant={TextVariant.bold20}>

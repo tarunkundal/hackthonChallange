@@ -1,5 +1,5 @@
 import HackthonCard from './HackthonCard'
-import { Grid, Stack } from '@chakra-ui/react'
+import { Grid, Heading, Stack } from '@chakra-ui/react'
 import { COLORS } from '@/styles/tokens/colors/constant'
 import { useAppSelector } from '@/store/hook'
 import useDebounce from '@/common/hooks/useDebounce'
@@ -23,6 +23,7 @@ const HackthonListComp = ({ filterData, searchQuery = '' }: PropsType) => {
 
         return levelMatch && searchMatch;
     });
+    if (!filteredHacktons.length) return <Heading textAlign={'center'} py={12} color={COLORS.Red[500]} >You have no challange, Please add to continue...</Heading>
     return (
         <>
             <Stack bg={COLORS.Brand[700]}>

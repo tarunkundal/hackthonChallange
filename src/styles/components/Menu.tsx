@@ -6,10 +6,11 @@ import { BgColor } from '../tokens/colors/bg'
 import { DefaultColor } from '../tokens/colors/default'
 import { IconColor } from '../tokens/colors/icon'
 import { TextColor } from '../tokens/colors/text'
+import { MenuVariant } from './constant'
 
-export enum MenuVariant {
-	vertical_dots = 'vertical_dots',
-}
+// export enum MenuVariant {
+// 	vertical_dots = 'vertical_dots',
+// }
 
 const helpers = createMultiStyleConfigHelpers(menuAnatomy.keys)
 

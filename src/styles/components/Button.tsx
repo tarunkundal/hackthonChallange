@@ -7,14 +7,15 @@ import { DefaultColor } from '../tokens/colors/default'
 import { IconColor } from '../tokens/colors/icon'
 import { TextColor } from '../tokens/colors/text'
 import { SHADOWS } from '../tokens/shadows'
+import { ButtonVariant } from './constant'
 
-export enum ButtonVariant {
-	primary = 'primary',
-	secondary = 'secondary',
-	outline = 'outline',
-	text = 'text',
-	primary_icon = 'primary_icon',
-}
+// export enum ButtonVariant {
+// 	primary = 'primary',
+// 	secondary = 'secondary',
+// 	outline = 'outline',
+// 	text = 'text',
+// 	primary_icon = 'primary_icon',
+// }
 
 export const Button = defineStyleConfig({
 	baseStyle: {
